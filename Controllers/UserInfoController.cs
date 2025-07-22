@@ -181,7 +181,8 @@ namespace LibararyWebApplication.Controllers
             var userInfo = new
             {
                 Name = user.Identity.Name,
-                Claims = user.Claims.Select(c => new { c.Type, c.Value }).ToList()
+                Claims = user.Claims.Select(c => new { c.Type, c.Value }).ToList(),
+                username = user.Identity.Name,
             };
 
             return Ok(userInfo);

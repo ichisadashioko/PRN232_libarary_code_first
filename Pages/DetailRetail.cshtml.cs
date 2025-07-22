@@ -116,7 +116,7 @@ namespace LibararyWebApplication.Pages
                     ErrorMessage = "You cannot renew because the rental is already overdue.";
                     return RedirectToPage(new { rentailId = RentalId });
                 }
-                
+
                 // Kiểm tra ngày phải trả
                 else if (Detail.DueDate.Date > DateTime.Now.Date.AddDays(1))
                 {
