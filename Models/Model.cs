@@ -150,11 +150,17 @@ public class PrnContext : DbContext
         modelBuilder.Entity<Book>(entity =>
         {
             entity.HasData(
-                        new Book { Id = 1, Title = "1984", AuthorId = 1, PublishedDate = new DateTime(1949, 6, 8), ImageBase64 = "https://bizweb.dktcdn.net/100/326/228/products/1984-by-george-orwell-bookworm-hanoi-038adcb4-d1cc-49ee-85eb-50f188229ecf.jpg" },
-                        new Book { Id = 2, Title = "To Kill a Mockingbird", AuthorId = 2, PublishedDate = new DateTime(1960, 7, 11), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg/1200px-To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg" },
-                        new Book { Id = 3, Title = "The Great Gatsby", AuthorId = 3, PublishedDate = new DateTime(1925, 4, 10), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg" }
-                    );
-
+                new Book { Id = 1, Title = "1984", AuthorId = 1, PublishedDate = new DateTime(1949, 6, 8), ImageBase64 = "https://bizweb.dktcdn.net/100/326/228/products/1984-by-george-orwell-bookworm-hanoi-038adcb4-d1cc-49ee-85eb-50f188229ecf.jpg" },
+                new Book { Id = 2, Title = "To Kill a Mockingbird", AuthorId = 2, PublishedDate = new DateTime(1960, 7, 11), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg/1200px-To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg" },
+                new Book { Id = 3, Title = "The Great Gatsby", AuthorId = 3, PublishedDate = new DateTime(1925, 4, 10), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg" },
+                new Book { Id = 4, Title = "Pride and Prejudice", AuthorId = 1, PublishedDate = new DateTime(1813, 1, 28), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/PrideAndPrejudiceTitlePage.jpg/500px-PrideAndPrejudiceTitlePage.jpg" },
+                new Book { Id = 5, Title = "Moby-Dick", AuthorId = 2, PublishedDate = new DateTime(1851, 10, 18), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Moby-Dick_FE_title_page.jpg/500px-Moby-Dick_FE_title_page.jpg" },
+                new Book { Id = 6, Title = "War and Peace", AuthorId = 3, PublishedDate = new DateTime(1869, 1, 1), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Tolstoy_-_War_and_Peace_-_first_edition%2C_1869.jpg/500px-Tolstoy_-_War_and_Peace_-_first_edition%2C_1869.jpg" },
+                new Book { Id = 7, Title = "The Catcher in the Rye", AuthorId = 1, PublishedDate = new DateTime(1951, 7, 16), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/The_Catcher_in_the_Rye_%281951%2C_first_edition_cover%29.jpg/960px-The_Catcher_in_the_Rye_%281951%2C_first_edition_cover%29.jpg" },
+                new Book { Id = 8, Title = "The Hobbit", AuthorId = 2, PublishedDate = new DateTime(1937, 9, 21), ImageBase64 = "https://upload.wikimedia.org/wikipedia/en/4/4a/TheHobbit_FirstEdition.jpg" },
+                new Book { Id = 9, Title = "Crime and Punishment", AuthorId = 3, PublishedDate = new DateTime(1866, 1, 1), ImageBase64 = "https://upload.wikimedia.org/wikipedia/en/4/4b/Crimeandpunishmentcover.png" },
+                new Book { Id = 10, Title = "The Brothers Karamazov", AuthorId = 1, PublishedDate = new DateTime(1880, 1, 1), ImageBase64 = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Dostoevsky-Brothers_Karamazov.jpg/500px-Dostoevsky-Brothers_Karamazov.jpg" }
+            );
 
             entity.HasMany(b => b.Categories)
             .WithMany(c => c.Books)
@@ -167,7 +173,14 @@ public class PrnContext : DbContext
                 new { BooksId = 2, CategoriesId = 3 },
                 new { BooksId = 3, CategoriesId = 1 },
                 new { BooksId = 3, CategoriesId = 2 },
-                new { BooksId = 3, CategoriesId = 3 }
+                new { BooksId = 3, CategoriesId = 3 },
+                new { BooksId = 4, CategoriesId = 1 },
+                new { BooksId = 5, CategoriesId = 1 },
+                new { BooksId = 6, CategoriesId = 3 },
+                new { BooksId = 7, CategoriesId = 3 },
+                new { BooksId = 8, CategoriesId = 2 },
+                new { BooksId = 9, CategoriesId = 3 },
+                new { BooksId = 10, CategoriesId = 3 }
             ));
         });
 
@@ -175,7 +188,27 @@ public class PrnContext : DbContext
             new BookCopy { Id = 1, BookId = 1, Status = "available", Condition = "new", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
             new BookCopy { Id = 2, BookId = 1, Status = "unavailable", Condition = "old", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
             new BookCopy { Id = 3, BookId = 2, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-            new BookCopy { Id = 4, BookId = 3, Status = "available", Condition = "new", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+            new BookCopy { Id = 4, BookId = 3, Status = "available", Condition = "new", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 5, BookId = 4, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 6, BookId = 5, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 7, BookId = 6, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 8, BookId = 7, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 9, BookId = 8, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 10, BookId = 9, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 11, BookId = 10, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 12, BookId = 11, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 13, BookId = 1, Status = "available", Condition = "new", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 14, BookId = 1, Status = "unavailable", Condition = "old", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 15, BookId = 2, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 16, BookId = 3, Status = "available", Condition = "new", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 17, BookId = 4, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 18, BookId = 5, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 19, BookId = 6, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 20, BookId = 7, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 21, BookId = 8, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 22, BookId = 9, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 23, BookId = 10, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+            new BookCopy { Id = 24, BookId = 11, Status = "available", Condition = "mid", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
         );
 
         modelBuilder.Entity<User>().HasData(

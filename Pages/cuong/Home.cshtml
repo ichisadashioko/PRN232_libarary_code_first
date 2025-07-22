@@ -313,7 +313,7 @@
 		document.getElementById("searchInput").addEventListener("input", function () {
 			const searchTerm = this.value;
 
-			fetch(`/api/v2/books?search=${encodeURIComponent(searchTerm)}`)
+			fetch(`/api/cuong/books?search=${encodeURIComponent(searchTerm)}`)
 				.then(response => response.json())
 				.then(data => {
 					const bookListContainer = document.querySelector(".book-container");
